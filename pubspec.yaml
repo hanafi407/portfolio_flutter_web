@@ -1,0 +1,28 @@
+name: porfolio_flutter_web
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.3.0-113.0.dev <4.0.0'
+
+dependencies:
+  animate_do: ^3.3.3
+  animated_text_kit: ^4.2.2
+  flutter:
+    sdk: flutter
+  google_fonts: ^6.1.0
+  http: ^1.2.0
+  path_provider: ^2.1.2
+  scrollable_positioned_list: ^0.3.8
+  url_launcher: ^6.2.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
