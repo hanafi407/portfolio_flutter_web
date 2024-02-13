@@ -2,6 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:porfolio_flutter_web/constant/url.dart';
 import 'package:porfolio_flutter_web/global/app_assets.dart';
 import 'package:porfolio_flutter_web/global/app_button.dart';
 import 'package:porfolio_flutter_web/global/app_colors.dart';
@@ -214,8 +215,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _urlLauncher() async {
-    Uri url = Uri.parse(
-        "https://drive.google.com/uc?export=download&id=136GQ-X_rOf5SMFFgb2gmleFADQCSULc7");
+    Uri url = Uri.parse(drive);
 
     if (await canLaunchUrl(url)) {
       await launchUrl(url);
