@@ -29,6 +29,12 @@ class _LatestProjectState extends State<LatestProject> {
       'title': 'Spring Boot',
       'body': 'Bus Reservation Backend and API.'
     },
+    {
+      'link': 'https://github.com/hanafi407/Trian-Jaya-Shop',
+      'image': AppAssets.react,
+      'title': 'ReactJs',
+      'body': 'Ecomerce use MERN(MongoDB, Express, React, NodeJs).'
+    },
   ];
 
   void _urlLauncher({required String uri}) async {
@@ -149,6 +155,7 @@ class _LatestProjectState extends State<LatestProject> {
                         ),
                       ),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
                             content['title'],

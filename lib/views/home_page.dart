@@ -10,6 +10,8 @@ import 'package:porfolio_flutter_web/global/app_notif.dart';
 import 'package:porfolio_flutter_web/global/app_size.dart';
 import 'package:porfolio_flutter_web/global/app_style.dart';
 import 'package:porfolio_flutter_web/global/app_text_style.dart';
+import 'package:porfolio_flutter_web/global/app_utils.dart';
+import 'package:porfolio_flutter_web/model/sosmed.dart';
 import 'package:porfolio_flutter_web/widget/profile_animation.dart';
 import 'package:porfolio_flutter_web/widget/responsive_layout.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -47,6 +49,14 @@ class _HomePageState extends State<HomePage> {
     'PHP',
     'Laravel',
     'CodeIgniter'
+  ];
+
+  List<Sosmed> sosmedLis = [
+    Sosmed(url: facebook,asset: AppAssets.facebook),
+    Sosmed(url: instagram,asset: AppAssets.insta),
+    Sosmed(url: twitter,asset: AppAssets.twitter),
+    Sosmed(url: linkedin,asset: AppAssets.linkedIn),
+    Sosmed(url: github,asset: AppAssets.github),
   ];
 
   List<String> iconSosMed = [
@@ -140,18 +150,18 @@ class _HomePageState extends State<HomePage> {
           child: ListView.separated(
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            itemCount: iconSosMed.length,
-            itemBuilder: (context, index) =>
-                buildSocialMediaCircle(asset: iconSosMed[index], index: index),
-            separatorBuilder: (context, index) => const SizedBox(
-              width: 5,
+            itemCount: sosmedLis.length,
+            itemBuilder: (context, index) => buildSocialMediaCircle(
+              sosmed: sosmedLis[index],
+              index: index,
             ),
+            separatorBuilder: (context, index) => const SizedBox(width: 5),
           ),
         ),
         const SizedBox(height: 15),
         AppButton.buildMaterialButton(
             onPressed: () {
-              _urlLauncher();
+              urlLauncher(context: context, uri: drive, message: "Couldn't download");
             },
             text: "Download CV"),
       ],
@@ -169,7 +179,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget buildSocialMediaCircle({
-    required String asset,
+    required Sosmed sosmed,
     required int index,
   }) {
     bool hover = indexSosMed == index;
@@ -187,7 +197,9 @@ class _HomePageState extends State<HomePage> {
         color: AppColors.bgColor,
       ),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          urlLauncher(context: context, uri: sosmed.url, message: "Could not load page");
+        },
         hoverColor: AppStyle.adjustColorBrightness(AppColors.buttonColor, 1.5),
         borderRadius: BorderRadius.circular(25),
         splashColor: AppColors.buttonColor,
@@ -203,7 +215,7 @@ class _HomePageState extends State<HomePage> {
         child: Container(
           padding: const EdgeInsets.all(12),
           child: Image.asset(
-            asset,
+            sosmed.asset,
             color: hover
                 ? AppStyle.adjustColorBrightness(AppColors.buttonColor, 1.5)
                 : AppColors.buttonColor,
@@ -212,15 +224,5 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
-  }
-
-  void _urlLauncher() async {
-    Uri url = Uri.parse(drive);
-
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url);
-    } else {
-      AppNotif.showSnackBarCustom(context, "Could not download");
-    }
   }
 }

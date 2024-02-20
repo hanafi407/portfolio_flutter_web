@@ -52,7 +52,7 @@ class _MyServiceState extends State<MyService> {
       backgrounColor: AppColors.bgColor2,
       mobile: Column(
         children: [
-          AppTitle.buildTitle(name1: "My", name2: "Project"),
+          AppTitle.buildTitle(name1: "My", name2: "Skill"),
           const SizedBox(
             height: 20,
           ),
@@ -64,7 +64,7 @@ class _MyServiceState extends State<MyService> {
       ),
       tablet: Column(
         children: [
-          AppTitle.buildTitle(name1: "My", name2: "Project"),
+          AppTitle.buildTitle(name1: "My", name2: "Skill"),
           const SizedBox(
             height: 20,
           ),
@@ -76,7 +76,7 @@ class _MyServiceState extends State<MyService> {
       ),
       desktop: Column(
         children: [
-          AppTitle.buildTitle(name1: "My", name2: "Project"),
+          AppTitle.buildTitle(name1: "My", name2: "Skill"),
           const SizedBox(
             height: 20,
           ),
